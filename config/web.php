@@ -14,6 +14,9 @@ $config = [
     'defaultRoute' => 'attendee/index',
     'components' => [
         'request' => [
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'ASA02JZ__qLZiVfpEjEE1hML_zjWsB2B',
         ],
@@ -44,14 +47,15 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'POST attendees-sync/Create'=> 'attendees-sync/create',
+                'PUT attendees-sync/Update/<id:\d+>'=> 'attendees-sync/update',
+                'DELETE attendees-sync/Delete/<id:\d+>'=> 'attendees-sync/delete',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
